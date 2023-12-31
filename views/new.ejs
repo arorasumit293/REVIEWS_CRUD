@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Write</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">
+      <%= heading %>
+    </h1>
+
+    <% if (locals.post) { %>
+      <form id="editForm" method="post" action="/create">
+        <input type="text" name="id" value="<%=post.id%>" hidden>
+        <input type="text" name="cover_id" value="<%=post.cover_key%>">
+        <input type="text" name="book_title" value="<%=post.book_title%>">
+        <input type="text" name="read_date" value="<%=post.read_date%>">
+        <input type="text" name="book_rating" value="<%=post.book_rating%>">
+        <textarea name="book_content" required rows="10"><%=post.book_content %></textarea>      
+        <button class="full-width" type="submit">EDIT</button>
+      </form>
+      <% } 
+      
+      else {%>
+        <form id="newPostForm" method="post" action="/create">
+          <input type="text" name="cover_id" placeholder="cover_id" required>
+          <input type="text" name="book_title" placeholder="book_title" required>
+          <input type="text" name="read_date" placeholder="read_date" required>
+          <input type="text" name="book_rating" placeholder="book_rating" required>
+          <textarea name="book_content" required rows="10"></textarea>          
+          <button class="full-width" type="submit">SUBMIT</button>
+        </form>
+        <% } %>
+  </div>
+</body>
+
+</html>

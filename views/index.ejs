@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Site demo</title>
+    <link rel="stylesheet" type = "text/css" href="styles/styles.css" />
+</head>
+<body>
+    
+    <div class = "header" style="margin-left:20px;">E-REVIEWS</div>
+    <div class = "card-container1">
+        <h3>SORT BY:</h3>
+        <form action="/" method="post">
+            <input type="hidden" name="title" value="1">
+            <button type="submit"><h4>Title</h4></button>
+        </form>
+        <form action="/" method="post">
+            <input type="hidden" name="recency" value="1">
+            <button type="submit"><h4>Recency</h4></button>
+        </form>
+        <form action="/" method="post">
+            <input type="hidden" name="rating" value="1">
+            <button type="submit"><h4>Rating</h4></button>
+        </form>
+        <h4><a href = "/new">Create Review</a></h4>
+    </div>
+    
+    <div class = "card-container2">
+        <%if(locals.booklist){%>
+            <% booklist.forEach(book => {%>
+                <div class = "card">
+                    <img src="data:image/jpeg;base64,<%=book.image%>">
+                    <h1><%=book.book_title%></h1>
+                    <div class = "card-container3">
+                        <h3>📆 Date read: <%=book.read_date%> ✨ Rating: <%=book.book_rating%>/10</h3>
+
+                        <form action="/edit" method="post">
+                            <input type="hidden" name="updatedItemId" value="<%=book.id %>">
+                            <button type="submit"><img style = "height:20px;"src="images/google-forms.png"></button>
+                        </form>
+                        
+                        <form action="/delete" method="post">
+                            <input type="checkbox" onchange="this.form.submit()" name="deleteItemId" value="<%= book.id  %>">
+                            Delete Post
+                        </form>
+                    </div>
+                    <p><%=book.book_content%></p>
+                </div>
+            <%})};%>
+    </div>
+   
+</body>
+</html>
+
+
+
+
