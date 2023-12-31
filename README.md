@@ -1,6 +1,6 @@
 A BASIC CRUD APP USING NODEJS, POSTGRES AS DATABASE, AND EJS ON FRONTEND
 
-<body align="center">
+<body style = "text-align:center;">
 
 <img width="500" height = "400"  alt="Screenshot 2023-12-31 at 10 29 37 PM" src="https://github.com/arorasumit293/REVIEWS_CRUD/assets/139625371/6196cdca-3d02-4caa-aa26-7110132a7955">
 
